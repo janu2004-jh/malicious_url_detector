@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Malicious URL Detector</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("https://media.gettyimages.com/id/1401357071/video/4k-technologic-background-loopable.jpg?s=640x640&k=20&c=5QOhGJOV7WhT0M_CpZG8mACe3JJNfmYHRVC8psA7iOI=");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .result.danger {
+            color: red;
+        }
+        .result.safe {
+            color: green;
+        }
+
+        .box {
+            background: transparent;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Malicious URL Detector</h1>
+        <form method="post">
+            <input type="text" name="url" placeholder="Enter URL to scan" required />
+            <br>
+            <button type="submit">Scan</button>
+        </form>
+
+    {% if result %}
+    <div class="result {% if result == 'Malicious' %}danger{% else %}safe{% endif %}">
+        URL: {{ url }} <br>
+        Result: {{ result }}
+
+    </div>
+    {% endif %}
+
+
+    </div>
+</body>
+</html>
